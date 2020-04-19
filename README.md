@@ -57,6 +57,6 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1',
 - Select the project repository
 - Click on Unknown 
 - Copy and paste the Markdown result to the README.md file 
-- [![Build Status](https://travis-ci.com/Rian1010/django-blog-lessons.svg?branch=master)](https://travis-ci.com/Rian1010/django-blog-lessons)
+
 
 [![Build Status](https://travis-ci.com/Rian1010/django-blog-lessons.svg?branch=master)](https://travis-ci.com/Rian1010/django-blog-lessons)
