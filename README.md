@@ -45,3 +45,16 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1',
 
 ## .gitignore
 - echo -e "*.sqlite3\n*.pyc\n.vscode\n/myvenv\n/venv\n__pycache__/" > .gitignore
+
+## Upload Onto Github
+- git add .
+- git status 
+- git commit -m "Created simple Django project"
+- git remote add origin < the repository url >
+- git push -u origin master
+
+## Travis CI
+- Select the project repository
+- Click on Unknown 
+- Copy and paste the Markdown result to the README.md file 
+[![Build Status](https://travis-ci.com/Rian1010/django-blog-lessons.svg?branch=master)](https://travis-ci.com/Rian1010/django-blog-lessons)
