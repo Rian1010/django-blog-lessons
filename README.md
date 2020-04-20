@@ -56,10 +56,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1',
 ## Travis CI
 - Select the project repository
 - Click on Unknown 
-- Copy and paste the Markdown result to the README.md file (Check raw edits of this README.md file)
-
-
-[![Build Status](https://travis-ci.com/Rian1010/django-blog-lessons.svg?branch=master)](https://travis-ci.com/Rian1010/django-blog-lessons)
+- Copy and paste the Markdown result to the very bottom of the README.md file (Check raw edits of this README.md file)
 
 ## Start An App
 - ./manage.py startapp posts
@@ -69,7 +66,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1',
 - Create folders in workspace: media -> img
 - Create folders in workspace: static -> css, img, js
 
-##Settings
+## Settings
 ### Recognise the New App
 - In settings.py, add 'posts', in INSTALLED_APPS for it to recognise the new app
 
@@ -243,3 +240,6 @@ urlpatterns = [
 
 ## Run Server
 - python3 ./manage.py runserver
+
+
+[![Build Status](https://travis-ci.com/Rian1010/django-blog-lessons.svg?branch=master)](https://travis-ci.com/Rian1010/django-blog-lessons)
