@@ -241,5 +241,90 @@ urlpatterns = [
 ## Run Server
 - python3 ./manage.py runserver
 
+## Housekeeping
+- In settings.py, add:
+```python
+if os.path.exists('env.py'):
+    import env
+```
+- In settings.py, change the SECRET_KEY to:
+```python
+SECRET_KEY = os.environ.get("SECRET_KEY")
+```
+
+## Heroku
+- Create a new app
+- Go to resources
+- Search for Heroku Postgres and select the free Hobby Dev
+- A database key and value should appear in the conf vars
+- Add the SECRET_KEY to the conf vars
+- Comment in the DATABASE variable and replace it with:
+```python
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+}
+```
+- Add an env.py file and add into it the following: 
+```python
+import os
+
+os.environ.setdefault("SECRET_KEY", '<get the value of the SECRET_KEY from heroku conf>')
+os.environ.setdefault("DATABASE_URL", '<get the value of the DATABASE_URLfrom heroku conf>')
+```
+- ./manage.py makemigrations
+- ./manage.py migrate
+- ./manage.py createsuperuser
+- python3 ./manage.py runserver
+
+### For Statics
+- sudo pip3 install whitenoise
+- pip3 freeze --local > requirements.txt
+
+### settings.py
+- In the 'MIDDLEWARE' variable, add:
+```python
+'whitenoise.middleware.WhiteNoiseMiddleware',
+```
+- Under the 'STATICFILES_DIRS' variable, add
+```python 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+``` 
+
+- Change the 'DATABASE' variable to the following:
+```python
+if "DATABASE_URL" in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
+else:
+    print("Postgres URL not found, using sqlite instead")
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+```
+
+### Procfile
+- Create a Procfile
+- Write the following line in it: web: gunicorn blog.wsgi:application
+
+### Install gunicorn
+- sudo pip3 install gunicorn
+
+### Hostname
+- Add the Heroku page hostname to the 'ALLOWED_HOSTS' variable in settings.py
+```python
+ALLOWED_HOSTS = ['localhost', '127.0.0.1',
+                os.environ.get('HOSTNAME')]
+```
+OR 
+```python
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'django-blog-test-app-ci.herokuapp.com']
+```
+##### Make sure to remove "https//:" and "/" from the Heroku URL in the value
+
+- Deploy
 
 [![Build Status](https://travis-ci.com/Rian1010/django-blog-lessons.svg?branch=master)](https://travis-ci.com/Rian1010/django-blog-lessons)
