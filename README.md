@@ -325,6 +325,10 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'django-blog-test-app-ci.herokuapp.co
 ```
 ##### Make sure to remove "https//:" and "/" from the Heroku URL in the value
 
-- Deploy
+### Deployment
+- git add .
+- git status 
+- git commit -m "Added Heroku and Postgres support for deployment"
+- git push
 
 [![Build Status](https://travis-ci.com/Rian1010/django-blog-lessons.svg?branch=master)](https://travis-ci.com/Rian1010/django-blog-lessons)
