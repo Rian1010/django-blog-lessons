@@ -57,6 +57,16 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1',
 - Select the project repository
 - Click on Unknown 
 - Copy and paste the Markdown result to the very bottom of the README.md file (Check raw edits of this README.md file)
+- Create a .travis.yml file
+- In that file, add the following:
+```python
+language: python
+python:
+    - "3.7"
+install: pip3 install -r requirements.txt
+script:
+    - SECRET_KEY="whatever" python manage.py test
+```
 
 ## Start An App
 - ./manage.py startapp posts
@@ -330,5 +340,11 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'django-blog-test-app-ci.herokuapp.co
 - git status 
 - git commit -m "Added Heroku and Postgres support for deployment"
 - git push
+
+## Heroku
+- Connect to Github in Deploy
+- Scroll down to 'Manual Deploy' and click on 'Deploy Branch'
+- Check if the website works or not
+- If things are not working, click on the 'More' button and go to 'View Logs'
 
 [![Build Status](https://travis-ci.com/Rian1010/django-blog-lessons.svg?branch=master)](https://travis-ci.com/Rian1010/django-blog-lessons)
